@@ -6,7 +6,137 @@
 #import "AppDelegate.h"
 
 
-/// 
+/// KV programming
+
+@interface BankEmployee : NSObject {
+	double salary;
+}
+
+@end
+
+@implementation BankEmployee
+
+
+@end
+
+@interface Bank : NSObject {
+	BankEmployee *_employee;
+}
+
+@end
+
+
+
+
+// file: KVSample.h
+
+// sample interface containing three variables
+@interface KVSample : NSObject
+{
+	int _anInt;
+	double _aDouble;
+	NSString *_aString;
+}
+
+- (int) anInt;
+- (double) aDouble;
+- (NSString*)aString;
+
+- (void) setAnInt:(int) val;
+- (void) setADouble: (double) val;
+- (void) setAString: (NSString*) str;
+
+- (id) init;
++ (BOOL) accessInstanceVariablesDirectly;
++ (void) accessData;
+
+@end
+
+
+// file: KVSample.m
+
+//#import "KVSample.h"
+
+@implementation KVSample
+
+- (id) init
+{
+	KVSample *obj = [super init];
+	if (obj)
+	{
+		obj->_anInt = 10;
+		obj->_aDouble = 11.0;
+		obj->_aString = @"test";
+	}
+	return obj;
+}
+
+- (void) setAnInt:(int) x
+{
+	_anInt = x;
+}
+
+- (void) setADouble: (double) x
+{
+	_aDouble = x;
+}
+
+- (void) setAString: (NSString*) s
+{
+	_aString = s;
+}
+
+- (void) setEnabled: (BOOL) v {
+
+}
+
+- (BOOL) isEnabled {
+	return TRUE;
+}
+
+- (int) anInt
+{
+	return _anInt;
+}
+
+- (double) aDouble
+{
+	return _aDouble;
+}
+
+- (NSString*)aString
+{
+	return _aString;
+}
+
++ (void) accessData
+{
+	KVSample *sample = [[KVSample alloc] init];
+//	NSNumber *a = [sample valueForKey:@"anInt"];
+//	NSLog(@"int value: %@", a);
+//	NSNumber *b = [sample valueForKey:@"aDouble"];
+//	NSLog(@"double value: %@", b);
+//	NSNumber *c = [sample valueForKey:@"aString"];
+//	NSLog(@"double value: %@", c);
+
+	[sample setValue:@20 forKey:@"anInt"];
+	[sample setValue:@44.0 forKey:@"aDouble"];
+	[sample setValue:@"another value" forKey:@"aString"];
+	[sample setValue:@YES forKey:@"enabled"];
+
+	NSNumber *a = [sample valueForKey:@"anInt"];
+	NSLog(@"int value: %@", a);
+	NSNumber *b = [sample valueForKey:@"aDouble"];
+	NSLog(@"double value: %@", b);
+	NSNumber *c = [sample valueForKey:@"aString"];
+	NSLog(@"double value: %@", c);
+}
+
++ (BOOL) accessInstanceVariablesDirectly {
+	return NO;
+}
+
+@end
 
 /// Memory Management
 
@@ -1742,8 +1872,10 @@ NSString *replaceOne(NSString *myString) {
 
 	//[self testSecurityMethods];
 
-	UseIMP *useImp = [[[UseIMP alloc] init] autorelease];
-	[useImp callWithImplementation];
+	//UseIMP *useImp = [[[UseIMP alloc] init] autorelease];
+	//[useImp callWithImplementation];
+
+	[KVSample accessData];
 }
 
 
