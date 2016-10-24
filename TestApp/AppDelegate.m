@@ -6,48 +6,955 @@
 #import "AppDelegate.h"
 
 
+NSMutableString *s323;
+
+NSMutableData *s2222;
+
+///////////////////////////
+
+#define MAX_PATH_LENGTH 255
+
+#define BEGIN {
+#define END }
+#define PROCEDURE void
+
+PROCEDURE myFunction(int val)
+BEGIN
+	if (val > 0)
+	BEGIN
+		NSLog(@"value is positive");
+    END
+
+END
+
+
+@class MyExternalClass;
+
+@interface MyInternalClass : NSObject {
+	MyExternalClass *externalObject;
+}
+
+-(MyExternalClass*) getExtObject;
+
+@end
+
+// file MyInternalClass.m
+
+//#import "MyExtenalClass.h"
+
+@implementation MyInternalClass
+
+- (MyExternalClass*) getExtObject
+{
+	// implementation here ...
+	return nil;
+}
+
+- (void) accessArray:(int) index
+{
+	int *values = (int*)malloc(sizeof(int)*10);
+	// initialize values array here...
+
+	// index contains -1 in this example:
+	int result = values[index];
+	NSLog(@"result is %d", result);
+	free(values);
+}
+
+- (void) getArrayValue
+{
+	NSArray *values = @[ @0, @1, @2, @3];
+	NSArray *numbers = values;
+
+	// do something with the values array here.
+
+	[values release];
+	id two = numbers[2];
+	NSLog(@"number is %@", two);
+}
+
+
+@end
+
+#define MAXIMUM(a, b)  \
+  (a) > (b) ? \
+	 (a) : \
+     (b)
+
+#define EXP_TRUE(expression) \
+  if (expression) \
+    NSLog(@"the following expression is true: " #expression)
+
+@interface A1 : NSObject
+
+@end
+
+@implementation A1
+
+- (void) useMacro
+{
+	EXP_TRUE(2 + 3 > 4);
+}
+
+- (double)squareRoot:(double) x
+{
+	assert(x > 0);
+	// perform calculations here
+	return 0;
+}
+
+- (int) getSupportLevel
+{
+#if VERSION > 5
+	return 2;
+#elif VERSION >= 2 && VERSION <= 5
+	return 1;
+#else
+	return 0;
+#endif
+}
+
+- (int) getSupportLevel2
+{
+#if VERSION > 5
+	return 2;
+#endif
+
+
+#if VERSION >= 2 && VERSION <= 5
+	return 1;
+#endif
+
+#if VERSION < 2
+	return 0;
+#endif
+}
+
+- (void) detectGCCCompiler
+{
+#ifdef __GCC__
+	NSLog(@"This is the GCC compiler");
+#endif
+
+#ifndef __GCC__
+	NSLog(@"This is not the GCC compiler");
+#endif
+}
+
+
+- (BOOL) systemIsSupported
+{
+#if defined(__GCC__) && VERSION > 3
+	return YES;
+#else
+	return NO;
+#endif
+}
+
+#ifndef INCLUDED_MYFILE
+#define INCLUDED_MYFILE
+
+
+#endif
+
+#define VARIABLE_NAME(partA, partB) \
+   partA ## _ ## partB
+
+
+- (void)useMacroConcatenation
+{
+
+	int VARIABLE_NAME(my, variable) = 10;
+	NSLog(@"the value is %d", my_variable);
+}
+
+
+- (void)useMacro3
+{
+
+	int VARIABLE_NAME(my, variable) = 10;
+
+
+	int i = 10;
+	NSLog(@"the maximum is %d", MAXIMUM(i++, 11));
+}
+
+
+- (BOOL)checkPathSize:(NSString *)path
+{
+	if ([path length] > MAX_PATH_LENGTH )
+	{
+		NSLog(@"Error: the path length is invalid");
+		return NO;
+
+	}
+	return YES;
+}
+
+@end
+
+//
+
+// fundamental classes
+
+NSObject *a10;
+NSString *a45;
+
+///////
+
+NSValue *c1;
+NSNumber *b1;
+NSDate *u;
+NSCalendar *l;
+NSData *t;
+
+// Collections
+
+NSArray *f;
+NSDictionary *y;
+
+
+NSHashTable *oo;
+NSOrderedSet *a12;
+NSSet*a41;
+
+
+
+NSRange *a25;
+
+////////
+NSAffineTransform *a;
+NSAppleEventDescriptor *b;
+NSAppleEventManager *c;
+NSAppleScript *d;
+NSArchiver *e;
+
+NSAttributedString *g;
+NSAutoreleasePool *h;
+NSBundle *i;
+NSByteCountFormatter *j;
+NSCache *k;
+
+NSCalendarDate *m;
+NSCharacterSet *n;
+NSClassDescription *o;
+NSCoder *p;
+NSComparisonPredicate *q;
+NSCompoundPredicate *r;
+NSConnection *s;
+
+
+NSDateFormatter *v;
+NSDecimal *w;
+NSDecimalNumber *x;
+//
+NSDistantObject *z;
+NSDistributedLock *aa;
+NSDistributedNotificationCenter *bb;
+NSEnumerator *cc;
+NSError *dd;
+NSException *ee;
+NSExpression *ff;
+NSFileCoordinator *gg;
+NSFileHandle *hh;
+NSFileHandle *ii;
+NSFileManager *jj;
+NSFileVersion *kk;
+NSFileWrapper *ll;
+NSFormatter *mm;
+NSGarbageCollector *nn;
+///
+NSHost *pp;
+NSHTTPCookie *qq;
+NSIndexPath *rr;
+NSIndexSet *ss;
+NSInvocation *tt;
+NSJSONSerialization *uu;
+NSKeyedArchiver *vv;
+NSKeyValueChange *ww;
+NSKeyValueObservingOptions *xx;
+NSLinguisticTagger *yy;
+NSLocale *zz;
+NSLock *a1;
+NSMapTable *a2;
+NSMetadataItem *a3;
+NSMethodSignature *a4;
+NSNetService *a5;
+NSNotification *a6;
+NSNotificationQueue *a7;
+NSNull *a8;
+NSNumberFormatter *a9;
+//
+NSOperation *a11;
+//
+NSOrthography *a13;
+NSPointArray *a14;
+NSPointerFunctions *a15;
+NSPort *a16;
+NSPortCoder *a17;
+NSPortMessage *a18;
+NSPortNameServer *a19;
+NSPredicate *a20;
+NSProcessInfo *a21;
+NSPropertyListFormat *a22;
+NSProtocolChecker *a23;
+NSProxy *a24;
+//
+NSRegularExpression *a26;
+NSRunLoop *a39;
+NSScanner *a40;
+//
+NSSortDescriptor *a42;
+NSSpellChecker *a43;
+NSStream *a44;
+//
+NSTask *a46;
+NSTextCheckingResult *a47;
+NSThread *a48;
+NSTimer *a49;
+NSTimeZone *a50;
+NSUndoManager *a51;
+NSURL *a52;
+NSURLAuthenticationChallenge *a53;
+NSURLCache *a54;
+NSURLConnection *a55;
+NSURLCredential *a56;
+NSURLDownload *a57;
+NSURLHandle *a58;
+NSURLProtocol *a59;
+NSURLRequest *a60;
+NSURLResponse *a61;
+NSUserDefaults *a62;
+NSUserNotification *a63;
+NSUserScriptTask *a64;
+NSValue *a65;
+NSValueTransformer *a66;
+NSXMLDocument *a67;
+NSZone *a68;
+
+
+
+
+
+// File AsyncDataWriter.h
+
+@interface AsyncDataWriter : NSObject <NSStreamDelegate>
+{
+	NSOutputStream *_outStream;
+	int _position;
+}
+
+- (void) setupOutputStream:(NSString*)fileName;
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)event;
+
++ (AsyncDataWriter*)testWrite;
+
+@property (retain) NSArray *outData;
+
+@end
+
+@implementation AsyncDataWriter
+
+- (void) setupOutputStream:(NSString*)fileName
+{
+	NSURL *url = [NSURL URLWithString:fileName];
+
+	if (_outStream == nil)
+	{
+		_outStream = [[NSOutputStream alloc]
+					  initWithURL:url
+					  append:YES];
+		self.outData = @[
+				   @"A string\n",
+				   @"B values\n",
+				   @"C test\n",
+				   @"D class\n" ];
+		_position = 0;
+	}
+	[_outStream setDelegate:self];
+	[_outStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+						  forMode:NSDefaultRunLoopMode];
+
+	[_outStream open];
+}
+
+
+- (void)releaseStream
+{
+	@throw [NSException exceptionWithName:@"salaryException"
+								   reason:@"no salary available"
+								 userInfo:NULL];
+	[_outStream close];
+	[_outStream removeFromRunLoop:[NSRunLoop currentRunLoop]
+						  forMode:NSDefaultRunLoopMode];
+	[_outStream release];
+	_outStream = nil;
+}
+
+#define NUM_ITEMS_IN_ARRAY 50
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)event
+{
+	char bytes[NUM_ITEMS_IN_ARRAY];
+	switch (event)
+	{
+		case NSStreamEventHasSpaceAvailable:
+			_position++;
+			if (_position <= [_outData count])
+			{
+
+				NSString *element = _outData[_position-1];
+				[element getCString:bytes
+						  maxLength:NUM_ITEMS_IN_ARRAY
+						   encoding:NSASCIIStringEncoding];
+				NSLog(@"ss %s %d", bytes, (int)[element length]);
+				[_outStream write:(const uint8_t *)bytes
+						maxLength:[element length]];
+			}
+			else
+			{
+				[self releaseStream];
+			}
+			break;
+		case NSStreamEventEndEncountered:
+			[self releaseStream];
+			break;
+		default:
+			break;
+	}
+}
+
+- (void)dealloc
+{
+	self.outData = nil;
+	[super dealloc];
+}
+
++ (AsyncDataWriter*)testWrite
+{
+	AsyncDataWriter *writer = [[AsyncDataWriter alloc] init];
+	[writer setupOutputStream:@"file:///Users/coliveira/testFile4"];
+	return [writer autorelease];
+}
+
+@end
+
+// File AsyncDataReader.h
+
+@interface AsyncDataReader : NSObject <NSStreamDelegate>
+{
+	NSInputStream *_stream;
+	NSMutableData *_data;
+	NSOutputStream *_outStream;
+
+}
+
+- (void)setupStream:(NSString*)path;
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)event;
+
++ (AsyncDataReader*)testRead;
+
+@property (retain) NSData *outData;
+
+@end
+
+// file AsyncDataReader.m
+
+//#import "AsyncDataReader.h"
+
+@implementation AsyncDataReader
+
+- (void) setupStream:(NSString*)fileName
+{
+	NSURL *url = [NSURL URLWithString:fileName];
+
+	if (_stream == nil)
+		_stream = [[NSInputStream alloc] initWithURL:url];
+	[_stream setDelegate:self];
+	[_stream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+					   forMode:NSDefaultRunLoopMode];
+
+	[_stream open];
+}
+
+
+
+#define NUM_ITEMS_IN_ARRAY 5
+
+- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)event
+{
+	uint8 bytes[NUM_ITEMS_IN_ARRAY];
+	switch (event)
+	{
+		case NSStreamEventHasBytesAvailable:
+		{
+			if  (_data == nil)
+				_data = [[NSMutableData alloc] init];
+			NSInteger len = [(NSInputStream*)stream read:bytes maxLength:NUM_ITEMS_IN_ARRAY];
+			[_data appendBytes:bytes length:len*sizeof(bytes[0])];
+			NSLog(@"Data received: %ld bytes: ", len);
+			// save data stored in bytes
+
+		}
+			break;
+		case NSStreamEventEndEncountered:
+        {
+			[_stream close];
+			[_stream removeFromRunLoop:[NSRunLoop currentRunLoop]
+							   forMode:NSDefaultRunLoopMode];
+			[_stream release];
+			_stream = nil;
+		}
+			break;
+		default:
+			break;
+	}
+}
+
++ (AsyncDataReader*) testRead
+{
+	AsyncDataReader *reader = [[AsyncDataReader alloc] init];
+	[reader setupStream:@"file:///Users/coliveira/testFile"];
+	return [reader autorelease];
+}
+
+- (void) dealloc
+{
+	[_data release];
+	[super dealloc];
+}
+
+@end
+
+// file ReadBinaryData.h
+
+@interface ReadBinaryData : NSObject
+
+- (NSData*)readData:(NSString*)fileName;
+
++ (void) testRead;
+
+@end
+
+// file ReadBinaryData.m
+
+//#include "ReadBinaryData.h"
+
+@implementation ReadBinaryData
+
+#define MAX_DATA_SIZE 1024
+
+- (NSData*)readData:(NSString*)fileName
+{
+	NSURL *url = [NSURL URLWithString:fileName];
+
+	NSError *error;
+	NSData *data = [NSData dataWithContentsOfURL:url options:NSDataReadingUncached error:&error];
+	if (data == nil)
+	{
+		NSLog(@"error reading file: %@", [error userInfo]);
+	}
+	else
+	{
+		int data_size = (int)[data length];
+		
+		unichar array[MAX_DATA_SIZE];
+		int size = data_size;
+		if (data_size > MAX_DATA_SIZE) size = MAX_DATA_SIZE;
+
+		[data getBytes:array length:size];
+		NSString *dataStr = [NSString stringWithCharacters:array length:size];
+		NSLog(@"first bytes of data are: %@", dataStr);
+	}
+	return data;
+}
+
+
+- (void)writeData:(int*)numbers length:(int)size
+			 dest:(NSString*)fileName
+{
+	NSURL *url = [NSURL URLWithString:fileName];
+
+	NSError *error;
+	NSData *data = [NSData dataWithBytes:numbers length:sizeof(int)*size];
+	BOOL ok = [data writeToURL:url
+					   options:NSDataWritingAtomic
+						 error:&error];
+
+	if (!ok)
+	{
+		NSLog(@"error writing to file: %@", [error userInfo]);
+	}
+
+}
+
++ (void) testRead
+{
+	ReadBinaryData *reader = [[ReadBinaryData alloc] init];
+	[reader readData:@"file:///Users/coliveira/testFile"];
+	int numbers[] = { 5, 4, 3, 2, 1 };
+	[reader writeData:numbers length:5 dest:@"file:///Users/coliveira/testFile3"];
+	[reader release];
+}
+
+
+@end
+
+
+// file FileWriter.h
+
+@interface FileWriter : NSObject
+
++ (void) writeTest;
+
+- (void) writeFile:(NSString*) fileName content:(NSString*)data;
+
+@end
+
+
+// file FileWriter.m
+
+//#include "FileWriter.h"
+
+@implementation FileWriter
+
+- (void) writeFile:(NSString*) fileName content:(NSString*)data;
+{
+	NSURL *url = [NSURL URLWithString:fileName];
+
+	NSError *error;
+	BOOL res = [data writeToURL:url
+					 atomically:NO
+					   encoding:NSUnicodeStringEncoding
+						  error:&error];
+	if (!res)
+	{
+		NSLog(@"error writing to file %@", [error userInfo]);
+	}
+
+
+}
+
++ (void) writeTest
+{
+	FileWriter *writer = [[FileWriter alloc] init];
+	[writer writeFile:@"file:///Users/coliveira/testFile2"
+	  content:@"This is the content of the file written by"
+					 " the file writer."];
+}
+
+@end
+
+// file FileReader.h
+
+@interface FileReader : NSObject
+
++ (void) readTest;
+
+- (void) readFile:(NSString*) fileName;
+
+@end
+
+// file FileReader.m
+
+//#include "FileReader.h"
+
+@implementation FileReader
+
+- (void) readFile:(NSString*) fileName
+{
+	NSURL *url = [NSURL URLWithString:fileName];
+
+	NSError *error;
+	NSString *str = [NSString
+					 stringWithContentsOfURL:url
+					 encoding:NSStringEncodingConversionAllowLossy
+					 error:&error];
+
+	NSLog(@"String is %@", str);
+}
+
++ (void) readTest
+{
+	FileReader *reader = [[FileReader alloc] init];
+	[reader readFile:@"file:///Users/coliveira/testFile"];
+}
+
+@end
+
+
 /// KV programming
 
-@interface BankEmployee : NSObject {
-	double salary;
-}
+
+// file BankEmployee.h
+@interface BankEmployee : NSObject
+
+@property double salary;
+
+- (id) init ;
+
+// other properties and methods here
 
 @end
 
+
+// file BankEmployee.m
 @implementation BankEmployee
 
-
-@end
-
-@interface Bank : NSObject {
-	BankEmployee *_employee;
+- (id) init
+{
+	self = [super init];
+	if (self)
+	{
+		self.salary = 200000.0;
+	}
+	return self;
 }
 
 @end
 
 
+// file Bank.h
+@interface Bank : NSObject {
+	NSArray *employees;
+}
+
+- (NSUInteger) countOfBankEmployees;
+
+- (id) objectInBankEmployeesAtIndex:(NSUInteger)index;
+
++ (void) accessBankData;
+
+- (id) init;
+
+@end
+
+// file Bank.m
+//#import "Bank.h"
+@implementation Bank
+
+- (id) init
+{
+	self = [super init];
+	if (self)
+	{
+		self->employees = @[[[[BankEmployee alloc] init] autorelease]];
+		[employees retain];
+	};
+	return self;
+}
+
+- (NSUInteger) countOfBankEmployees
+{
+	return self->employees.count;
+}
+
+- (id) objectInBankEmployeesAtIndex:(NSUInteger)index
+{
+	id r = self->employees[index];
+	return r;
+}
+
+- (void) dealloc
+{
+	[self->employees release];
+	[super dealloc];
+}
+
++ (void) accessBankData2
+{
+	Bank *bank = [[Bank alloc] init];
+
+	NSArray * res = [bank valueForKeyPath:@"bankEmployees"];
+	NSLog(@"The first employee is %@", res[0]);
+}
+
++ (void) accessBankData
+{
+	Bank *bank = [[Bank alloc] init];
+
+	id res = [bank valueForKeyPath:@"bankEmployees.@sum.salary"];
+	NSLog(@"The total salary amount is %@", res);
+	[bank release];
+}
+
+
+@end
+
+
+@interface BankPayrool : NSObject {
+	BankEmployee *employee;
+	double _currentSalary;
+}
+
+- (id) initWithEmployee:(BankEmployee *)anEmployee;
+- (void) startObserving;
++ (void) useBankPayroll;
+
+@end
+
+@implementation BankPayrool
+
+- (id) initWithEmployee:(BankEmployee *)anEmployee
+{
+	self = [super init];
+	if (self)
+	{
+		employee = anEmployee;
+		[employee retain];
+	}
+	return self;
+}
+
+- (void) dealloc
+{
+		[employee removeObserver:self forKeyPath:@"salary"];
+	[employee release];
+	[super dealloc];
+}
+
+- (void) startObserving
+{
+	[employee addObserver:self forKeyPath:@"salary"
+				  options:NSKeyValueObservingOptionNew
+				  context:nil];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath
+					   ofObject:(id)object
+						 change:(NSDictionary *)change
+						context:(void *)context
+{
+	if (object == employee) {
+		[self setValue:
+		 [change objectForKey:NSKeyValueChangeNewKey]
+				forKey:@"currentSalary"];
+		NSLog(@"current salary is now %lf", _currentSalary);
+	}
+}
+
++ (void) useBankPayroll
+{
+	BankEmployee *employee = [[BankEmployee alloc] init];
+	BankPayrool *payroll = [[BankPayrool alloc] initWithEmployee:employee];
+
+	[payroll startObserving];
+	[employee setValue:@300000.0 forKey:@"salary"];
+	[payroll release];
+	[employee release];
+}
+
+@end
+
+
+// file Bank.h
+@interface Bank2 : NSObject
+
+@property (retain) BankEmployee *employee;
+
++ (void) accessBank ;
+
+- (id) init;
+
+@end
+
+// file Bank.m
+//#import "Bank.h"
+@implementation Bank2
+
+- (id) init
+{
+	Bank2 *obj = [super init];
+	if (obj)
+	{
+		obj.employee = [[BankEmployee alloc] init];
+	}
+	return obj;
+}
+
+
++ (void) accessBank {
+	Bank2 *bank = [[Bank2 alloc] init];
+
+	id res = [bank valueForKeyPath:@"employee.salary"];
+	NSLog(@"The salary is %@", res);
+}
+
+- (void) dealloc
+{
+	self.employee = nil;
+	[super dealloc];
+}
+
+@end
+
+
+// file KVStructSample.h
+
+typedef struct
+{
+	int anInt;
+	double aDouble;
+} SampleStruct;
+
+
+
+@interface KVStructSample : NSObject {
+	SampleStruct _structValue;
+}
+
+@property SampleStruct structValue;
+
+@end
+
+@implementation KVStructSample
+
+- (id) init
+{
+	KVStructSample *obj = [super init];
+	if (obj)
+	{
+		SampleStruct val = { 1, 2.0 };
+		obj.structValue = val;
+	}
+	return obj;
+}
+
+- (id)valueForUndefinedKey:(NSString *)key
+{
+ 	return [NSNumber numberWithInt:0];
+}
+
++ (void) accessData
+{
+	KVStructSample *sample = [[KVStructSample alloc] init];
+	NSValue *val = [sample valueForKey:@"structValue"];
+	SampleStruct structVal;
+	[val getValue:&structVal];
+	NSLog(@"The value is %d and %lf", structVal.anInt, structVal.aDouble);
+	[sample release];
+}
+
+@end
 
 
 // file: KVSample.h
 
 // sample interface containing three variables
 @interface KVSample : NSObject
-{
-	int _anInt;
-	double _aDouble;
-	NSString *_aString;
-}
 
-- (int) anInt;
-- (double) aDouble;
-- (NSString*)aString;
+@property int anInt;
 
-- (void) setAnInt:(int) val;
-- (void) setADouble: (double) val;
-- (void) setAString: (NSString*) str;
+@property double aDouble;
+
+@property (retain) NSString *aString;
 
 - (id) init;
+
 + (BOOL) accessInstanceVariablesDirectly;
+
 + (void) accessData;
 
 @end
@@ -64,71 +971,34 @@
 	KVSample *obj = [super init];
 	if (obj)
 	{
-		obj->_anInt = 10;
-		obj->_aDouble = 11.0;
-		obj->_aString = @"test";
+		obj.anInt = 10;
+		obj.aDouble = 11.0;
+		obj.aString = @"test";
 	}
 	return obj;
 }
 
-- (void) setAnInt:(int) x
-{
-	_anInt = x;
-}
-
-- (void) setADouble: (double) x
-{
-	_aDouble = x;
-}
-
-- (void) setAString: (NSString*) s
-{
-	_aString = s;
-}
-
-- (void) setEnabled: (BOOL) v {
-
-}
-
-- (BOOL) isEnabled {
-	return TRUE;
-}
-
-- (int) anInt
-{
-	return _anInt;
-}
-
-- (double) aDouble
-{
-	return _aDouble;
-}
-
-- (NSString*)aString
-{
-	return _aString;
-}
 
 + (void) accessData
 {
 	KVSample *sample = [[KVSample alloc] init];
-//	NSNumber *a = [sample valueForKey:@"anInt"];
-//	NSLog(@"int value: %@", a);
-//	NSNumber *b = [sample valueForKey:@"aDouble"];
-//	NSLog(@"double value: %@", b);
-//	NSNumber *c = [sample valueForKey:@"aString"];
-//	NSLog(@"double value: %@", c);
+	NSNumber *a = [sample valueForKey:@"anInt"];
+	NSLog(@"int value: %@", a);
+	NSNumber *b = [sample valueForKey:@"aDouble"];
+	NSLog(@"double value: %@", b);
+	NSNumber *c = [sample valueForKey:@"aString"];
+	NSLog(@"double value: %@", c);
 
 	[sample setValue:@20 forKey:@"anInt"];
 	[sample setValue:@44.0 forKey:@"aDouble"];
 	[sample setValue:@"another value" forKey:@"aString"];
 	[sample setValue:@YES forKey:@"enabled"];
 
-	NSNumber *a = [sample valueForKey:@"anInt"];
+	a = [sample valueForKey:@"anInt"];
 	NSLog(@"int value: %@", a);
-	NSNumber *b = [sample valueForKey:@"aDouble"];
+	b = [sample valueForKey:@"aDouble"];
 	NSLog(@"double value: %@", b);
-	NSNumber *c = [sample valueForKey:@"aString"];
+	c = [sample valueForKey:@"aString"];
 	NSLog(@"double value: %@", c);
 }
 
@@ -268,6 +1138,7 @@ int amain()
 	@autoreleasepool {
 		// statements here
 	}
+	return 0;
 }
 
 // file SortArray.h
@@ -1638,9 +2509,9 @@ typedef int MyNewIntType;
 - (void) useLoanSource2 {
 	MyLoanSource *loanSource = [[MyLoanSource alloc] init];
 	InvestmentAdvisor *advisor = [[InvestmentAdvisor alloc] init];
-	advisor.loanSource = loanSource;
-	BOOL res = [advisor  findLoan:10000];
-	NSLog(@"result is %d", res ? 1 : 0);
+	//advisor.loanSource = loanSource;
+	//BOOL res = [advisor  findLoan:10000];
+	//NSLog(@"result is %d", res ? 1 : 0);
 }
 
 - (void) useLoanSource
@@ -1875,7 +2746,22 @@ NSString *replaceOne(NSString *myString) {
 	//UseIMP *useImp = [[[UseIMP alloc] init] autorelease];
 	//[useImp callWithImplementation];
 
-	[KVSample accessData];
+	//[KVSample accessData];
+	//[KVStructSample accessData];
+
+	//[Bank accessBankData];
+
+	//[BankPayrool useBankPayroll];
+
+	//[FileReader readTest];
+	//[FileWriter writeTest];
+
+
+	//[ReadBinaryData testRead];
+
+	//[[AsyncDataReader testRead] retain];
+
+	[[AsyncDataWriter testWrite] retain];
 }
 
 
@@ -1891,6 +2777,12 @@ NSString *replaceOne(NSString *myString) {
 {
 	NSLog(@"message is: %@", message);
 }
+
++ (void) classtest {
+	id a = self;
+	NSLog(@"val : %@", a);
+}
+
 @end
 
 void printTextExample()

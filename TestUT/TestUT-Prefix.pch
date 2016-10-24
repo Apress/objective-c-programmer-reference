@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'TestUT' target in the 'TestUT' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
